@@ -13,7 +13,6 @@ const workoutData = new Schema({
       type: {
         type: String,
         trim: true,
-        required: "",
       },
       duration: {
         type: Number,
