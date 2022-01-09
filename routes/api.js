@@ -3,8 +3,8 @@ const Workout = require("../models/workout.js");
 
 router.post("/api/workout", ({ body }, res) => {
   Workout.create(body)
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((workoutDb) => {
+      res.json(workoutDb);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -16,8 +16,8 @@ router.put("/api/workout/:id", ({ body, params }, res) => {
     { $push: { exercises: body } },
     { new: true }
   )
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((workoutDb) => {
+      res.json(workoutDb);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -31,8 +31,8 @@ router.get("/api/workout", (req, res) => {
       },
     },
   ])
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+    .then((workoutDb) => {
+      res.json(workoutDb);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -49,8 +49,8 @@ router.get("/api/workout/range", (req, res) => {
   ])
     .sort({ day: -1 })
     .limit(7)
-    .then((dbWorkout) => {
-      res.json(dbWorkout.reverse());
+    .then((workoutDb) => {
+      res.json(workoutDb.reverse());
     })
     .catch((err) => {
       res.status(400).json(err);
